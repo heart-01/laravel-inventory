@@ -1,0 +1,160 @@
+import { createRouter, createWebHistory } from 'vue-router'
+
+// Import Layout
+import FrontendLayout from '@/layouts/Frontend.vue'
+
+// Import Views
+// Frontend
+import Home from '@/views/frontend/Home.vue'
+import About from '@/views/frontend/About.vue'
+import Portfolio from '@/views/frontend/Portfolio.vue'
+import Service from '@/views/frontend/Service.vue'
+import Contact from '@/views/frontend/Contact.vue'
+import Register from '@/views/frontend/Auth/Register.vue'
+import Login from '@/views/frontend/Auth/Login.vue'
+import ForgotPassword from '@/views/frontend/Auth/ForgotPassword.vue'
+
+//Error handling
+import NotFound404 from '@/views/error/NotFound404.vue'
+
+// Backend
+
+const routes = [
+  {
+    path: '/',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: '', 
+        name: 'Home', 
+        component: Home
+      }
+    ],
+    meta : {
+      title : 'หน้าหลัก',
+      description : 'หน้าหลักระบบคงคลังสินค้า'
+    }
+  },
+  {
+    path: '/about',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: '', 
+        name: 'About', 
+        component: About
+      }
+    ],
+    meta : {
+      title : 'เกี่ยวกับเรา',
+      description : 'เกี่ยวกับเราระบบคงคลังสินค้า'
+    }
+  },
+  {
+    path: '/portfolio',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: '', 
+        name: 'Portfolio', 
+        component: Portfolio
+      }
+    ],
+    meta : {
+      title : 'ผลงาน',
+      description : 'ผลงานระบบคงคลังสินค้า'
+    }
+  },
+  {
+    path: '/service',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: '', 
+        name: 'Service', 
+        component: Service
+      }
+    ],
+    meta : {
+      title : 'บริการ',
+      description : 'บริการระบบคงคลังสินค้า'
+    }
+  },
+  {
+    path: '/contact',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: '', 
+        name: 'Contact', 
+        component: Contact
+      }
+    ],
+    meta : {
+      title : 'ติดต่อเรา',
+      description : 'ติดต่อเราระบบคงคลังสินค้า'
+    }
+  },
+  {
+    path: '/register',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: '', 
+        name: 'Register', 
+        component: Register
+      }
+    ],
+    meta : {
+      title : 'สมัครสมาชิก',
+      description : 'สมัครสมาชิกระบบคงคลังสินค้า'
+    }
+  },
+  {
+    path: '/login',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: '', 
+        name: 'Login', 
+        component: Login
+      }
+    ],
+    meta : {
+      title : 'เข้าสู่ระบบ',
+      description : 'เข้าสู่ระบบคงคลังสินค้า'
+    }
+  },
+  {
+    path: '/forgotpassword',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: '', 
+        name: 'ForgotPassword', 
+        component: ForgotPassword
+      }
+    ],
+    meta : {
+      title : 'ลืมรหัสผ่าน',
+      description : 'ลืมรหัสผ่านระบบคงคลังสินค้า'
+    }
+  },
+
+  //Error 404
+  {
+    path: '/:catchAll(.*)', //catch all ในกรณีที่ไม่เจอหน้าอะไรก็ตาม
+    component: NotFound404,
+    meta : {
+      title : '404 ไม่พบหน้านี้',
+      description : 'รายละเอียดหน้า 404 ไม่พบหน้านี้'
+    }
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+})
+
+export default router
