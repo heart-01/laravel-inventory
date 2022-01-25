@@ -19,6 +19,8 @@ return [
 
     'allowed_methods' => ['*'],
 
+    // allowed_origins การกำหนดอนุญาติให้กับ domain web site ที่ client จะยิง API มาได้
+    // 'allowed_origins' => ['https://www.itgenius.co.th, http://www.abc.com'],
     'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
@@ -29,6 +31,7 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    //supports_credentials คือ ถ้ามีการยิง api มาจาก domain อื่น ๆ จาก client ข้ามโดเมนให้สามารถยิง token มายืนยันตัวตนได้
+    'supports_credentials' => true,
 
 ];

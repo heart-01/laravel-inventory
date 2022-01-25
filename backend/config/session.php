@@ -155,6 +155,7 @@ return [
     |
     */
 
+     //Session Cookie Domain เป็น domain ที่ใช้ run laravel ต้องกำหนดด้วยว่าเราใช้ domain อะไรโดยปกติจะไม่ได้กำหนดไว้จะเป็น null เราต้องกำหนดว่า laravel เรา run อยู่เว็บอะไร
     'domain' => env('SESSION_DOMAIN', null),
 
     /*
