@@ -85,14 +85,48 @@ export default {
         ).then(response => { 
           localStorage.setItem('user', JSON.stringify(response.data)) //เก็บข้อมูล user response.data ลง localStorage
 
-          this.$router.push('backend') //ไปหน้า backend
+          //เรียกใช้ popup ของ sweetalert2
+          const Toast = this.$swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', this.$swal.stopTimer)
+              toast.addEventListener('mouseleave', this.$swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: 'กำลังเข้าสู่ระบบ...'
+          }).then(()=>{
+            this.$router.push({ name:'Dashboard' }) //เป็นการเข้าถึง route ผ่าน Name Route
+          })
+
         }).catch(error => {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
+          // console.log(error.response.data);
+          // console.log(error.response.status);
+          // console.log(error.response.headers);
+          if(error.response.status == 401)
+          {
+            //เรียกใช้ popup ของ sweetalert2
+            this.$swal({
+              position: 'center',
+              icon: 'error',
+              title: 'ข้อมูลเข้าระบบไม่ถูกต้อง',
+              showConfirmButton: true,
+              // timer: 1500
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.$router.push('/') 
+              }
+            });
+          }
         });
+
       }else{
-        alert('Not');
+        // alert('Not');
       }
     }
   },

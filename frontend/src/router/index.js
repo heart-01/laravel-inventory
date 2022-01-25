@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // Import Layout
 import FrontendLayout from '@/layouts/Frontend.vue'
+import BackendLayout from '@/layouts/Backend.vue'
 
 // Import Views
 // Frontend
@@ -18,8 +19,11 @@ import ForgotPassword from '@/views/frontend/Auth/ForgotPassword.vue'
 import NotFound404 from '@/views/error/NotFound404.vue'
 
 // Backend
+import Dashboard from '@/views/backend/Dashboard.vue'
+import Product from '@/views/backend/Product.vue'
 
 const routes = [
+  //Frontend
   {
     path: '/',
     component: FrontendLayout,
@@ -138,6 +142,38 @@ const routes = [
     meta : {
       title : 'ลืมรหัสผ่าน',
       description : 'ลืมรหัสผ่านระบบคงคลังสินค้า'
+    }
+  },
+
+  /** Backend Route */
+  {
+    path: '/backend',
+    component: BackendLayout,
+    children: [
+      {
+        path: '',
+        name: 'Dashboard',
+        component: Dashboard,
+      }
+    ],
+    meta : {
+      title : 'Dashbaord',
+      description : 'รายละเอียดหน้า Dashbaord'
+    }
+  },
+  {
+    path: '/backend',
+    component: BackendLayout,
+    children: [
+      {
+        path: 'products',
+        name: 'Product',
+        component: Product,
+      }
+    ],
+    meta : {
+      title : 'Product',
+      description : 'รายละเอียดหน้า Products'
     }
   },
 
