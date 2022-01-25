@@ -4,7 +4,7 @@
 
 <script>
 
-let brand = " | Inventory Vue SPA"
+let brand = " | " + process.env.VUE_APP_TITLE
 
 export default {
   name: 'App',

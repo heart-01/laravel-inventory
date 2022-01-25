@@ -129,16 +129,23 @@
 
 <script>
 
+import http from '@/services/BackendService'
+
 export default {
 
-  methods: {
-
-    onclickLogout(){
-      localStorage.removeItem('user') //ลบข้อมูล user ที่เก็บไว้ใน LocalStorage            
-      this.$router.push({ name:'Login' }) //เป็นการเข้าถึง route ผ่าน Name Route
+  data() { 
+    return {
+      url: process.env.VUE_APP_URL,
     }
-    
   },
 
+  methods: {
+    onclickLogout(){
+      http.post('logout').then(()=>{
+          localStorage.removeItem('user') //ลบข้อมูล user ที่เก็บไว้ใน LocalStorage            
+          this.$router.push({ name:'Login' }) //เป็นการเข้าถึง route ผ่าน Name Route
+      })
+    }
+  },
 }
 </script>

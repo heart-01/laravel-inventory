@@ -147,7 +147,7 @@
 
 <script>
 
-// import http from '@/service/BackendService'
+import http from '@/services/BackendService'
 
 export default {
     data() {
@@ -168,19 +168,17 @@ export default {
             this.showProfileMenu = false
         },
 
-        // onclickLogout(){            
-        //     http.post('logout').then(()=>{
-        //         // กลับไปหน้า login
-        //         // window.location = `${this.url}/login`
-        //         localStorage.removeItem('user') //ลบข้อมูล user ที่เก็บไว้ใน LocalStorage            
-        //         this.$router.push({ name:'Login' }) //เป็นการเข้าถึง route ผ่าน Name Route
-        //     }).catch(error => {
-        //         if(error.response){
-        //             console.log(error.response.data);
-        //             console.log(error.response.status);
-        //         }
-        //     })
-        // }
+        onclickLogout(){            
+            http.post('logout').then(()=>{
+                localStorage.removeItem('user') //ลบข้อมูล user ที่เก็บไว้ใน LocalStorage            
+                this.$router.push({ name:'Login' }) //เป็นการเข้าถึง route ผ่าน Name Route
+            }).catch(error => {
+                if(error.response){
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                }
+            })
+        }
     }
 }
 </script>

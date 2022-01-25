@@ -70,32 +70,34 @@
                         <th class="px-4 py-3">Manage</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                <!-- v-for เป็นการ loop object data products ใน vue -->
+                    <!-- :key="product.id" เป็นการ binding ข้อมูล หรือ ผูกข้อมูล ต้องใช้คีย์ที่ไม่ซ้ำกัน เลยใช้ product.id -->
+                <tbody v-for="product in products.data" :key="product.id" class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     
                     <tr class="text-gray-700 dark:text-gray-400 hover:bg-blue-100">
-                        <td class="px-4 py-3 text-sm">1</td>
+                        <td class="px-4 py-3 text-sm">{{ product.id }}</td>
                         <td class="px-4 py-3">
                             <div class="flex items-center text-sm">
                                 <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full" src="#" alt="" loading="lazy"/>
+                                    <img class="object-cover w-full h-full rounded-full" :src="product.image" alt="" loading="lazy"/>
                                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                 </div>
                                 <div>
-                                    <p class="font-semibold">Samsung S21</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Created 20/10/2020</p>
+                                    <p class="font-semibold">{{ product.name }}</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Created {{ product.created_at }}</p>
                                 </div>
                             </div>
                         </td>
-                        <td class="px-4 py-3 text-sm">23000</td>
+                        <td class="px-4 py-3 text-sm">{{ product.price }}</td>
                         <td class="px-4 py-3 text-sm">
                             <div class="flex items-center text-sm">
                                 <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full" src="" alt="" loading="lazy"/>
+                                    <img class="object-cover w-full h-full rounded-full" alt="" loading="lazy"/>
                                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                 </div>
                                 <div>
-                                    <p class="font-semibold">user_fullname</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Updated 20/10/2020</p>
+                                    <p class="font-semibold"> product.users.fullname </p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Updated {{ product.updated_at }}</p>
                                 </div>
                             </div>
                         </td>
@@ -119,3 +121,32 @@
     </div>
 
 </template>
+
+<script>
+
+import http from '@/services/BackendService'
+
+export default {
+    data(){
+        return { 
+            /** ตัวแปรสำหรับเก็บข้อมูลสินค้าที่อ่านจาก API */
+            products: [ //ตัวแปรที่ดึงข้อมูลสินค้า
+
+            ],
+            currentPage: 0, //ตัวแปรที่แบ่งหน้า
+        }
+    },
+
+    //mounted ขณะที่โหลดหน้าเว็บสำเร็จแล้วครั้งแรก
+    mounted(){
+        this.currentPage = 8; //เปลี่ยนเลขแบ่งหน้า
+        // อ่านสินค้าจาก API ครั้งเดียว
+        http.get(`products?page=${this.currentPage}`).then(response => { //request api
+            let responseProduct = response.data //data ที่ได้จาก api
+            this.products = responseProduct //นำข้อมูลใส่ในตัวแปร data products
+
+            console.log(this.products);
+        })
+    }
+}
+</script>
