@@ -25,6 +25,7 @@ import Product from '@/views/backend/Product.vue'
 // Other Views
 import MixinsFrom from '@/views/other/Mixins/MixinsFrom.vue'
 import HomeWorkMixinsFrom from '@/views/other/Mixins/HomeWorkMixinsForm.vue'
+import Slot from '@/views/other/Slot/Slot.vue'
 
 const routes = [
   //Frontend
@@ -207,7 +208,15 @@ const routes = [
     meta : {
       title : 'HomeWorkMixinsFroms'
     }
-  }
+  },
+  {
+    path: '/Slots',
+    name: 'Slots',
+    component: Slot,
+    meta : {
+      title : 'Slots'
+    }
+  },
 
 ]
 
