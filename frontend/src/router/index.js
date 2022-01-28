@@ -26,6 +26,7 @@ import Product from '@/views/backend/Product.vue'
 import MixinsFrom from '@/views/other/Mixins/MixinsFrom.vue'
 import HomeWorkMixinsFrom from '@/views/other/Mixins/HomeWorkMixinsForm.vue'
 import Slot from '@/views/other/Slot/Slot.vue'
+import DynamicComponent from '@/views/other/DynamicComponent/DynamicComponent.vue'
 
 const routes = [
   //Frontend
@@ -215,6 +216,14 @@ const routes = [
     component: Slot,
     meta : {
       title : 'Slots'
+    }
+  },
+  {
+    path: '/DynamicComponents',
+    name: 'DynamicComponents',
+    component: DynamicComponent,
+    meta : {
+      title : 'DynamicComponents'
     }
   },
 
