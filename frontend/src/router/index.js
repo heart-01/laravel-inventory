@@ -22,6 +22,10 @@ import NotFound404 from '@/views/error/NotFound404.vue'
 import Dashboard from '@/views/backend/Dashboard.vue'
 import Product from '@/views/backend/Product.vue'
 
+// Other Views
+import MixinsFrom from '@/views/other/Mixins/MixinsFrom.vue'
+import HomeWorkMixinsFrom from '@/views/other/Mixins/HomeWorkMixinsForm.vue'
+
 const routes = [
   //Frontend
   {
@@ -185,7 +189,26 @@ const routes = [
       title : '404 ไม่พบหน้านี้',
       description : 'รายละเอียดหน้า 404 ไม่พบหน้านี้'
     }
+  },
+
+  /** Other Route */
+  {
+    path: '/MixinsFroms',
+    name: 'MixinsFroms',
+    component: MixinsFrom,
+    meta : {
+      title : 'MixinsFroms'
+    }
+  },
+  {
+    path: '/HomeWorkMixinsFroms',
+    name: 'HomeWorkMixinsFroms',
+    component: HomeWorkMixinsFrom,
+    meta : {
+      title : 'HomeWorkMixinsFroms'
+    }
   }
+
 ]
 
 const router = createRouter({

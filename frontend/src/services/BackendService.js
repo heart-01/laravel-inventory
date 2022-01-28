@@ -34,8 +34,6 @@ BackendService.interceptors.request.use(config => {
     if(token){
         //config header ให้สามารถแนบ token เข้าไปได้โดยไม่รีเฟรซหน้า
         config.headers.Authorization = "Bearer "+token
-    }else{
-        alert('ข้อมูลเข้าระบบไม่ถูกต้อง')
     }
 
     return config //ส่ง config ไปใช้งาน

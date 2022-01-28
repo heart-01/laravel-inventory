@@ -19,13 +19,26 @@
 </template>
 
 <script>
+
+import myMixin1 from '@/mixins/exampleMixins1'
+import myMixin2 from '@/mixins/exampleMixins2'
+
 export default {
+    
+    name: 'Home',
+
+    created() {
+      this.hello2() //method hello2 myMixin2
+    },
+
     data(){
         return { 
             url: process.env.VUE_APP_URL,
             baseURLAPI: process.env.VUE_APP_URL_API,
             title: process.env.VUE_APP_TITLE
         }
-    }
+    },
+
+    mixins: [ myMixin1 , myMixin2 ]
 }
 </script>
