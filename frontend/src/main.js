@@ -17,4 +17,20 @@ app.use(store)
 app.use(router)
 app.use(VueSweetalert2)
 
+//filters ใช้กำหนดตัวกรองที่สามารถใช้เพื่อใช้การจัดรูปแบบข้อความทั่วไป 
+app.config.globalProperties.$filters = {
+    currencyUSD(value) {
+      return '$' + value
+    },
+
+    firstCharacter(value){
+        return value.charAt(0)
+    },
+
+    uppercase(value){
+        return value.toUpperCase()
+    },
+
+}
+
 app.mount('#app')

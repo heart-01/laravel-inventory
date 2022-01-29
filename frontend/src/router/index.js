@@ -28,6 +28,7 @@ import HomeWorkMixinsFrom from '@/views/other/Mixins/HomeWorkMixinsForm.vue'
 import Slot from '@/views/other/Slot/Slot.vue'
 import DynamicComponent from '@/views/other/DynamicComponent/DynamicComponent.vue'
 import CustomDirectives from '@/views/other/CustomDirectives/CustomDirectives.vue'
+import Filters from '@/views/other/Filters/Filters.vue'
 
 const routes = [
   //Frontend
@@ -233,6 +234,14 @@ const routes = [
     component: CustomDirectives,
     meta : {
       title : 'CustomDirectives'
+    }
+  },
+  {
+    path: '/Filters',
+    name: 'Filters',
+    component: Filters,
+    meta : {
+      title : 'Filters'
     }
   },
 
