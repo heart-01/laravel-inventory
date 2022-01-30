@@ -30,6 +30,7 @@ import DynamicComponent from '@/views/other/DynamicComponent/DynamicComponent.vu
 import CustomDirectives from '@/views/other/CustomDirectives/CustomDirectives.vue'
 import Filters from '@/views/other/Filters/Filters.vue'
 import RenderFunctions from '@/views/other/RenderFunctions/RenderFunctions.vue'
+import Jsx from '@/views/other/JSX/Jsx.vue'
 
 const routes = [
   //Frontend
@@ -251,6 +252,14 @@ const routes = [
     component: RenderFunctions,
     meta : {
       title : 'RenderFunctions'
+    }
+  },
+  {
+    path: '/Jsx',
+    name: 'Jsx',
+    component: Jsx,
+    meta : {
+      title : 'Jsx'
     }
   },
 
