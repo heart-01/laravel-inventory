@@ -29,6 +29,7 @@ import Slot from '@/views/other/Slot/Slot.vue'
 import DynamicComponent from '@/views/other/DynamicComponent/DynamicComponent.vue'
 import CustomDirectives from '@/views/other/CustomDirectives/CustomDirectives.vue'
 import Filters from '@/views/other/Filters/Filters.vue'
+import RenderFunctions from '@/views/other/RenderFunctions/RenderFunctions.vue'
 
 const routes = [
   //Frontend
@@ -242,6 +243,14 @@ const routes = [
     component: Filters,
     meta : {
       title : 'Filters'
+    }
+  },
+  {
+    path: '/RenderFunctions',
+    name: 'RenderFunctions',
+    component: RenderFunctions,
+    meta : {
+      title : 'RenderFunctions'
     }
   },
 
