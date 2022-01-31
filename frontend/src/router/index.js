@@ -31,6 +31,13 @@ import CustomDirectives from '@/views/other/CustomDirectives/CustomDirectives.vu
 import Filters from '@/views/other/Filters/Filters.vue'
 import RenderFunctions from '@/views/other/RenderFunctions/RenderFunctions.vue'
 import Jsx from '@/views/other/JSX/Jsx.vue'
+//NavigationsGuard
+import NavigatLogin from '@/views/other/NavigationsGuard/Login.vue'
+import NavigatHome from '@/views/other/NavigationsGuard/Home.vue'
+
+// Import Store
+import NavigationsStore from '@/store/NavigationsStore.js'
+
 
 const routes = [
   //Frontend
@@ -262,6 +269,22 @@ const routes = [
       title : 'Jsx'
     }
   },
+  {
+    path: '/NavigatLogin',
+    name: 'NavigatLogin',
+    component: NavigatLogin,
+    meta : {
+      title : 'NavigatLogin'
+    }
+  },
+  {
+    path: '/NavigatHome',
+    name: 'NavigatHome',
+    component: NavigatHome,
+    meta : {
+      title : 'NavigatHome'
+    }
+  },
 
 ]
 
@@ -269,5 +292,28 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+
+//NavigationsGuard
+router.beforeEach((to, from, next) => { //router.beforeEach ก่อนที่จะเข้าถึงหน้า
+  /**
+     to: วัตถุเส้นทาง เป้าหมาย ที่กำลังนำทางไป
+     from: เส้นทางปัจจุบันที่กำลังนำทางออกไป
+     next: ไปที่หน้าถัดไปเหมือนกับ router push
+
+     ทุก route ในเว็บไซต์จะเข้ามาใน router.beforeEach ทั้งหมดก่อนที่จะเปิดหน้า components แสดงผล เพื่อเช็คว่า router name ตัวไหนเราได้เข้าเงือนไขบ้าง ทุกเงื่อนไขต้องใส่ next() เพราะ ให้ไปต่อที่จุดไหนเราก็กำหนดเข้ามา
+   */
+  
+  console.log('Route beforeEach : ' + NavigationsStore.getters.isAuthen)
+  console.log('Route to Name : ' + to.name)
+  if(to.name !== 'NavigatLogin' && !NavigationsStore.getters.isAuthen) //ถ้าไม่ใช่หน้า Login และ isAuthen เป็น false
+  {
+    next({ name: 'NavigatLogin' })
+  }else {
+    console.log('Route isAuthen True');
+    next()
+  }
+  
+});
 
 export default router

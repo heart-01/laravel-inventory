@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import NavigationsStore from '@/store/NavigationsStore.js'
 
 // import Tailwind CSS มาใช้งาน
 import '@/styles/tailwind.css'
@@ -14,6 +15,7 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 const app = createApp(App)
 
 app.use(store)
+app.use(NavigationsStore)
 app.use(router)
 app.use(VueSweetalert2)
 
