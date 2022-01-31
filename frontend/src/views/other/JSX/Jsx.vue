@@ -28,7 +28,7 @@ import JsxComponent from '@/components/other/JSX/JsxComponent.vue'
                     'Mark',
                     'John'
                 ],
-                rawHtml: '<div> Heart </div>'
+                rawHtml: "<div class='mt-5' style='font-size: 50px;' > Heart </div>"
             }
         },
 

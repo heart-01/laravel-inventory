@@ -13,7 +13,7 @@
                             })
                         }
 
-                        <div domPropsInnerHTML={ this.html }></div>
+                        <div v-html={ this.html }></div>
                     </div>)
         },
 
