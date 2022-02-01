@@ -31,6 +31,7 @@ import CustomDirectives from '@/views/other/CustomDirectives/CustomDirectives.vu
 import Filters from '@/views/other/Filters/Filters.vue'
 import RenderFunctions from '@/views/other/RenderFunctions/RenderFunctions.vue'
 import Jsx from '@/views/other/JSX/Jsx.vue'
+import onceClick from '@/views/other/onceClick/onceClick.vue'
 //NavigationsGuard
 import NavigatLogin from '@/views/other/NavigationsGuard/Login.vue'
 import NavigatHome from '@/views/other/NavigationsGuard/Home.vue'
@@ -283,6 +284,14 @@ const routes = [
     component: NavigatHome,
     meta : {
       title : 'NavigatHome'
+    }
+  },
+  {
+    path: '/onceClick',
+    name: 'onceClick',
+    component: onceClick,
+    meta : {
+      title : 'onceClick'
     }
   },
 

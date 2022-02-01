@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 // store คือ พื้นที่ส่วนกลางที่ให้ app ของเราดึงค่าไปใช้งานได้
 export default createStore({
   state: { //ส่วนที่เก็บตัวแปรคล้ายกับ data ใน component
-    isAuthen: false
+    isAuthen: true
   },
   mutations: { //เป็นตัวกระทำตามคำสั่งของ Actions ในการเพิ่ม ลบ แก้ไขตัวแปร
     //ใช้สำหรับจัดการกับ state พวกเพิ่มค่าให้กับตัวแปร
