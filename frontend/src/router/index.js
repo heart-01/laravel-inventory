@@ -39,6 +39,26 @@ import NavigatHome from '@/views/other/NavigationsGuard/Home.vue'
 // Import Store
 import NavigationsStore from '@/store/NavigationsStore.js'
 
+//ทดสอบสร้างตัวแปรไว้เช็คค่าว่า login หรือยัง
+// let state = false
+
+//สร้างฟังชั่นสำหรับเช็ค route ก่อนเรียกใช้งาน (Route Auth Guard)
+function authGuard(to, from, next){
+  let isAuthenticated = false
+
+  if(localStorage.getItem('user')){
+    isAuthenticated = true //ถ้ามีข้อมูล localStoreage อยู่
+  }else{
+    isAuthenticated = false //ถ้าไม่มี localStoreage
+  }
+
+  if(isAuthenticated){
+    next() //อนุญาติให้เข้าสู่ route และโหลด component ที่ต้องการได้
+  }else{
+    next({name: 'Login'})
+  }
+}
+
 
 const routes = [
   //Frontend
@@ -172,6 +192,14 @@ const routes = [
         path: '',
         name: 'Dashboard',
         component: Dashboard,
+        beforeEnter: authGuard,
+        // berforeEnter: (to, from, next) => {
+        //   if(state) {  //เช็ค state ว่าสถานะมีการ login ไหม
+        //     next() //ให้โหลด component Dashboard
+        //   }else{
+        //     next({name: 'Login'}) //กลับไปหน้า login
+        //   }
+        // }
       }
     ],
     meta : {
@@ -187,6 +215,7 @@ const routes = [
         path: 'products',
         name: 'Product',
         component: Product,
+        beforeEnter: authGuard,
       }
     ],
     meta : {

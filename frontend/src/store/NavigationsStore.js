@@ -13,7 +13,10 @@ const vuexLocal = new VuexPersistence({ //Setup vuex-persist
 export default createStore({
   
   state: { //ส่วนที่เก็บตัวแปรคล้ายกับ data ใน component
-    isAuthen: false
+    isAuthen: true,
+
+    counter: 0, //counter ขะเป็นตัวแปรพิเศษสามารถมองเห็นได้ทั้งหมดของโปรแกรม
+    showSideMenu: true //แสดงเมนูหน้าจอ mobile
   },
 
   mutations: { //เป็นตัวกระทำตามคำสั่งของ Actions ในการเพิ่ม ลบ แก้ไขตัวแปร
@@ -21,6 +24,24 @@ export default createStore({
     SET_AUTHEN (state, payload) {
       console.log('Store Mutations SET_AUTHEN : ' + payload);
       state.isAuthen = payload
+    },
+    
+    //ฟังชั่นเพิ่มค่า counter
+    increment(state){
+      state.counter++
+      // state.counter = 'a'
+    },
+    //ฟังชั่นลบค่า counter
+    decrement(state){
+      state.counter--
+    },
+    //ฟังก์ชั่นซ่อนแสดงเมนูด้านข้าง
+    toggleSideMenu(state){
+      state.showSideMenu = !state.showSideMenu
+    },
+    //ฟังชั่นก์ปิดแถบเมนูด้านข้าง
+    closeSideMenu(state){
+      state.showSideMenu = true
     }
   },
 

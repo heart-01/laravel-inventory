@@ -4,7 +4,7 @@
         <div class="flex flex-col flex-1 w-full">
             <Navbar />
             <main class="h-full overflow-y-auto">
-                 <div class="container grid px-6 mx-auto">
+                 <div @click="onclickCloseMobilMenu" class="container grid px-6 mx-auto">
                     <router-view></router-view>
                  </div>
             </main>
@@ -22,6 +22,13 @@ export default {
     components: {
         Navbar,
         Sidebar
+    },
+
+    methods: {
+        onclickCloseMobilMenu(){
+            console.log('touch layouts backend');
+            this.$store.commit("closeSideMenu")
+        },
     }
 }
 </script>
