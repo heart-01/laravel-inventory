@@ -32,6 +32,7 @@ import Filters from '@/views/other/Filters/Filters.vue'
 import RenderFunctions from '@/views/other/RenderFunctions/RenderFunctions.vue'
 import Jsx from '@/views/other/JSX/Jsx.vue'
 import onceClick from '@/views/other/onceClick/onceClick.vue'
+import WebScraper from '@/views/other/WebScraper/WebScraper.vue'
 //NavigationsGuard
 import NavigatLogin from '@/views/other/NavigationsGuard/Login.vue'
 import NavigatHome from '@/views/other/NavigationsGuard/Home.vue'
@@ -321,6 +322,14 @@ const routes = [
     component: onceClick,
     meta : {
       title : 'onceClick'
+    }
+  },
+  {
+    path: '/WebScraper',
+    name: 'WebScraper',
+    component: WebScraper,
+    meta : {
+      title : 'WebScraper'
     }
   },
 
