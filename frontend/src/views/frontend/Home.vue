@@ -21,6 +21,11 @@
             </div>
         </div>
     </section>
+
+    <router-link :to="{ name: 'RoutePrams' }" class="px-4 py-2 mx-2 font-bold text-white bg-purple-500">Router link Default to RoutePrams</router-link>
+    <button @click="RouterPrams" class="px-4 py-2 mx-2 font-bold text-white bg-purple-500">Click methods to RoutePrams</button>
+    <router-link :to="{ path: '/RoutePrams/1111' }" class="px-4 py-2 mx-2 font-bold text-white bg-purple-500">Router link to RoutePrams</router-link>
+    <router-link :to="{ name: 'RoutePrams', params: { id: '5678' }}" class="px-4 py-2 mx-2 font-bold text-white bg-purple-500">Router link Name to RoutePrams</router-link>
 </template>
 
 <script>
@@ -53,6 +58,9 @@ export default {
         counterDown(){
             this.$store.commit("decrement") //this.$store.commit คือการเข้าถึง Mutations ใน vuex // decrement ชื่อฟังชั่นใน vuex
         },
+        RouterPrams(){
+            this.$router.push({ path: '/RoutePrams/1234'})
+        }
     }
 }
 </script>

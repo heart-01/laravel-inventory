@@ -33,6 +33,7 @@ import RenderFunctions from '@/views/other/RenderFunctions/RenderFunctions.vue'
 import Jsx from '@/views/other/JSX/Jsx.vue'
 import onceClick from '@/views/other/onceClick/onceClick.vue'
 import WebScraper from '@/views/other/WebScraper/WebScraper.vue'
+import RoutePrams from '@/views/other/RoutePrams/RoutePrams.vue'
 //NavigationsGuard
 import NavigatLogin from '@/views/other/NavigationsGuard/Login.vue'
 import NavigatHome from '@/views/other/NavigationsGuard/Home.vue'
@@ -330,6 +331,28 @@ const routes = [
     component: WebScraper,
     meta : {
       title : 'WebScraper'
+    }
+  },
+  {
+    // path: '/RoutePrams/:id?',
+    // name: 'RoutePrams',
+    // component: RoutePrams,
+    // meta : {
+    //   title : 'RoutePrams'
+    // }
+
+    path: '/RoutePrams/',
+    component: FrontendLayout,
+    children: [ 
+      {
+        path: ':id?', 
+        name: 'RoutePrams', 
+        component: RoutePrams
+      }
+    ],
+    meta : {
+      title : 'RoutePrams',
+      description : 'RoutePrams'
     }
   },
 
