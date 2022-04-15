@@ -14,11 +14,14 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('id'); //increments int 10 หลัก
-            $table->string('name');
-            $table->string('slug'); //url สินค้า
+            $table->id();
+            $table->string('name')->index();
+            $table->string('slug'); //url ของสินค้า
             $table->string('description')->nullable();
-            $table->string('price', 9, 2); // 1,234,567.50
+            $table->decimal('price', 9, 2); // 2,859,893.50
+            $table->string('image')->nullable(); 
+            $table->unsignedBigInteger('user_id')->comment('Create By User');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -21,8 +21,10 @@ class User extends Authenticatable
         'fullname',
         'username',
         'email',
+        'email_verified_at',
         'password',
         'tel',
+        'avatar',
         'role',
     ];
 
@@ -44,4 +46,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     *  Products Relationship
+     * Join Model ได้เลยถ้าเชื่อมกันด้วย id
+     * 1 ผู้ใช้สามารถมีได้หลายสินค้า
+     */
+
+    public function products()
+    {
+        return $this->hasMany(Product::class)->orderBy('id', 'desc');
+    }
 }
