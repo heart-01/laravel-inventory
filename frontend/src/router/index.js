@@ -380,7 +380,7 @@ router.beforeEach((to, from, next) => { //router.beforeEach ก่อนที�
   {
     next({ name: 'NavigatLogin' })
   }else {
-    console.log('Route isAuthen True');
+    console.log('Route isAuthen Trues');
     next()
   }
   
