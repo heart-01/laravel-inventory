@@ -1,3 +1,4 @@
+import http from '@/services/BackendService'
 import { createStore } from 'vuex'
 
 /**
@@ -14,6 +15,8 @@ export default createStore({
   
   state: { //ส่วนที่เก็บตัวแปรคล้ายกับ data ใน component
     isAuthen: true,
+    
+    product: {},
 
     counter: 0, //counter ขะเป็นตัวแปรพิเศษสามารถมองเห็นได้ทั้งหมดของโปรแกรม
     showSideMenu: true //แสดงเมนูหน้าจอ mobile
@@ -24,6 +27,20 @@ export default createStore({
     SET_AUTHEN (state, payload) {
       console.log('Store Mutations SET_AUTHEN : ' + payload);
       state.isAuthen = payload
+    },
+
+    async CREATE_PRODUCT(state, productData) {
+      try {
+        const product = await http.post("/products", productData)
+        console.log(product.data)
+        if (product.status === 201) {
+          const products = await http.get("/products")
+          state.products = products.data
+          console.log("product status = 201")
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
     },
     
     //ฟังชั่นเพิ่มค่า counter
@@ -50,6 +67,11 @@ export default createStore({
     setAuthen ({ commit }, payload) {
       console.log('Store Actions payload : ' + payload);
       commit('SET_AUTHEN', payload)
+    },
+
+    createProduct({ commit }, productData) {
+      console.log(productData)
+      commit("CREATE_PRODUCT", productData)
     }
   },
 
